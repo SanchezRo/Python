@@ -1,0 +1,11 @@
+dias = int(input('Quantos dias o Veiculo esteve Alugado? '))
+kmInicial = float(input('Qual a Kilometragem Inicial do Veiculo? '))
+kmAtual = float(input('Qual a Kilometragem Atual do Veiculo? '))
+kmRodado = float(kmAtual-kmInicial)
+print(' Voce rodou por ', kmRodado, 'Km')
+print('O Valores são: ')
+print('Por dia    -    R$60,00')
+print('Por Km Rodado - R$00,15')
+total = (60*dias) + (0.15*kmRodado)
+
+print('O Tatal a Pagar é de: R$', total)
