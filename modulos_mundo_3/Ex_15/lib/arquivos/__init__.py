@@ -1,3 +1,4 @@
+from fileinput import close
 from tkinter import PanedWindow
 from modulos_mundo_3.Ex_15.lib.interface import cabecalho
 
@@ -29,4 +30,23 @@ def ler_arquivo(nome):
         print('Houve um ERRO na leitura do Arquivo!')
     else:
         cabecalho('PESSOAS CADASTRADAS')
-        print(a.read())
+        for linha in a:
+            dado = linha.split(';')
+            dado[1] = dado[1].replace('\n', '')
+            print(f'{dado[0]:<30}{dado[1]:>3} anos')
+    finally:
+        close()
+
+def cadastrar(arq, nome='desconhecido', idade=0):
+    try:
+        a = open(arq, 'at')
+    except:
+        print('Houve um ERRO na leitura do Arquivo!')
+    else:
+        try:
+            a.write(f'{nome};{idade}\n')
+        except:
+            print('Houve um ERRO ao gravar os dados!')
+        else:
+            print(f'Novo registro de {nome} adicionado')
+            close()
